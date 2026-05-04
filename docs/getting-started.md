@@ -39,7 +39,7 @@ The site will then be available at `http://localhost:5173`.
 | Step | Description |
 | --- | --- |
 | 1 | [Read the introduction](/guide/introduction) |
-| 2 | [Explore the features](/guide/features) |
+| 2 | [Learn the core KPI structure](/guide/core-kpi) |
 | 3 | Create your own dashboard |
 
 ::: tip

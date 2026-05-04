@@ -1,33 +1,40 @@
 # openKPI
 
-Dokumentations-Site für openKPI, gebaut mit [VitePress](https://vitepress.dev).
+Documentation site for openKPI, built with [VitePress](https://vitepress.dev).
 
-## Voraussetzungen
+## Requirements
 
 - [Node.js](https://nodejs.org/) **>= 18**
-- [npm](https://www.npmjs.com/) **>= 9** (alternativ pnpm oder yarn)
+- [npm](https://www.npmjs.com/) **>= 9** (alternatively pnpm or yarn)
 
-## Projektstruktur
+## Project Structure
 
 ```
 .
 ├── docs/
 │   ├── .vitepress/
-│   │   └── config.mts        # VitePress-Konfiguration (Nav, Sidebar, Theme)
+│   │   └── config.mts        # VitePress configuration (nav, sidebar, theme)
 │   ├── guide/
 │   │   ├── introduction.md
-│   │   └── features.md
+│   │   ├── core-kpi.md
+│   │   ├── units-of-measurement.md
+│   │   ├── aggregations.md
+│   │   ├── time-windows.md
+│   │   ├── transport/
+│   │   │   ├── api.md
+│   │   │   └── event.md
+│   │   └── sdks.md
 │   ├── about.md
 │   ├── getting-started.md
-│   └── index.md              # Startseite (Hero-Layout)
+│   └── index.md              # Landing page (hero layout)
 ├── package.json
 ├── .gitignore
 └── README.md
 ```
 
-Markdown-Dateien unter `docs/` werden automatisch zu HTML-Seiten gerendert.
-Die Datei `docs/.vitepress/config.mts` definiert Navigation, Sidebar und
-weitere Theme-Einstellungen.
+Markdown files under `docs/` are automatically rendered as HTML pages.
+The file `docs/.vitepress/config.mts` defines the navigation, sidebar
+and other theme settings.
 
 ## Installation
 
@@ -35,64 +42,63 @@ weitere Theme-Einstellungen.
 npm install
 ```
 
-## Entwicklung
+## Development
 
-Lokalen Dev-Server mit Hot Reload starten:
+Start the local dev server with hot reload:
 
 ```bash
 npm run docs:dev
 ```
 
-Die Seite ist anschließend standardmäßig unter
-`http://localhost:5173` erreichbar.
+The site is then available at `http://localhost:5173` by default.
 
 ## Build
 
-Statische Seite produktiv bauen:
+Build the static site for production:
 
 ```bash
 npm run docs:build
 ```
 
-Die Build-Artefakte liegen unter:
+The build artifacts are written to:
 
 ```
 docs/.vitepress/dist
 ```
 
-Dieser Ordner kann unverändert auf einem beliebigen Static-Hosting
-(z. B. GitHub Pages, Netlify, S3, Nginx) ausgeliefert werden.
+This folder can be served as-is by any static host
+(e.g. GitHub Pages, Netlify, S3, Nginx).
 
-## Build vorschauen
+## Preview the Build
 
-Den erzeugten Build lokal testen:
+Test the generated build locally:
 
 ```bash
 npm run docs:preview
 ```
 
-## Verfügbare Skripte
+## Available Scripts
 
-| Skript                 | Zweck                                              |
-| ---------------------- | -------------------------------------------------- |
-| `npm run docs:dev`     | Startet den Entwicklungsserver mit Hot Reload      |
-| `npm run docs:build`   | Erzeugt die statische Site unter `docs/.vitepress/dist` |
-| `npm run docs:preview` | Liefert den fertigen Build lokal aus               |
+| Script                 | Purpose                                                     |
+| ---------------------- | ----------------------------------------------------------- |
+| `npm run docs:dev`     | Starts the development server with hot reload               |
+| `npm run docs:build`   | Generates the static site at `docs/.vitepress/dist`         |
+| `npm run docs:preview` | Serves the generated build locally                          |
 
-## Neue Seite hinzufügen
+## Adding a New Page
 
-1. Neue `.md`-Datei unter `docs/` (oder einem Unterordner) anlegen.
-2. Optional Front-Matter-Block am Dateianfang hinzufügen
+1. Create a new `.md` file under `docs/` (or a subfolder).
+2. Optionally add a front-matter block at the top of the file
    (`title`, `description`, `layout`, …).
-3. Verlinkung in `docs/.vitepress/config.mts` (Nav/Sidebar) ergänzen,
-   damit die Seite in der Navigation erscheint.
+3. Add a link in `docs/.vitepress/config.mts` (nav/sidebar) so the
+   page shows up in the navigation.
 
-## Deployment-Hinweise
+## Deployment Notes
 
-- Bei Hosting unter einem Unterpfad (z. B. `https://example.com/docs/`)
-  in `docs/.vitepress/config.mts` die Option `base: '/docs/'` setzen.
-- Der Build ist rein statisch – es ist kein Node.js-Server zur Laufzeit nötig.
+- When hosting under a sub-path (e.g. `https://example.com/docs/`),
+  set the `base: '/docs/'` option in `docs/.vitepress/config.mts`.
+- The build is fully static — no Node.js server is required at runtime.
 
-## Lizenz
+## License
 
 MIT

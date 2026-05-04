@@ -40,4 +40,4 @@ flowchart LR
 
 ## Further Reading
 
-Continue with the [Features](./features) page.
+Continue with the [Core KPI](./core-kpi) page.

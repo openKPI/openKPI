@@ -6,10 +6,13 @@ export default defineConfig({
   lang: 'en-US',
   cleanUrls: true,
   themeConfig: {
+    search: {
+      provider: 'local'
+    },
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started' },
-      { text: 'Guide', link: '/guide/introduction' },
+      { text: 'Specification', link: '/specification/introduction' },
       { text: 'About', link: '/about' }
     ],
     sidebar: [
@@ -21,14 +24,28 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Guide',
+        text: 'Specification',
         items: [
-          { text: 'Introduction', link: '/guide/introduction' },
-          { text: 'Features', link: '/guide/features' },
-          { text: 'Units of Measurement', link: '/guide/units-of-measurement' },
-          { text: 'Aggregations', link: '/guide/aggregations' },
-          { text: 'Time Windows', link: '/guide/time-windows' },
-          { text: 'SDKs', link: '/guide/sdks' }
+          { text: 'Introduction', link: '/specification/introduction' },
+          {
+            text: 'Core KPI',
+            link: '/specification/core-kpi',
+            collapsed: false,
+            items: [
+              { text: 'Units of Measurement', link: '/specification/units-of-measurement' },
+              { text: 'Aggregations', link: '/specification/aggregations' },
+              { text: 'Time Windows', link: '/specification/time-windows' }
+            ]
+          },
+          {
+            text: 'Transport',
+            collapsed: false,
+            items: [
+              { text: 'API', link: '/specification/transport/api' },
+              { text: 'Event', link: '/specification/transport/event' }
+            ]
+          },
+          { text: 'SDKs', link: '/specification/sdks' }
         ]
       },
       {
