@@ -22,9 +22,9 @@ queries and batch reporting.
 | Method | Path                 | Purpose                                      |
 | ------ | -------------------- | -------------------------------------------- |
 | `GET`  | `/kpis`              | List available KPI definitions               |
-| `GET`  | `/kpis/{kpi_id}`     | Fetch the latest value for a single KPI      |
-| `POST` | `/kpis/{kpi_id}`     | Submit a new value for a KPI                 |
-| `GET`  | `/kpis/{kpi_id}/history` | Fetch historical values over a time range |
+| `GET`  | `/kpis/{id}`         | Fetch the latest value for a single KPI      |
+| `POST` | `/kpis/{id}`         | Submit a new value for a KPI                 |
+| `GET`  | `/kpis/{id}/history` | Fetch historical values over a time range   |
 
 ## Example
 
@@ -39,8 +39,9 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "kpi_id": "revenue_sum_monthly",
-  "kpi_name": "Monthly Revenue",
+  "id": "revenue_sum_monthly",
+  "name": "Monthly Revenue",
+  "description": "Total order revenue booked in the calendar month, in euros.",
   "value": 128450.75,
   "unit": "EUR",
   "aggregation": "sum",
@@ -50,7 +51,6 @@ Content-Type: application/json
     "end": "2026-04-01T00:00:00Z"
   },
   "timestamp": "2026-04-01T02:15:00Z",
-  "definition_version": "1.2.0",
   "source": "billing-service"
 }
 ```

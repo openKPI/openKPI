@@ -5,43 +5,64 @@ description: First steps with openKPI
 
 # Getting Started
 
-This page describes the first steps with openKPI.
+openKPI is **a specification, not a piece of software**. There is
+nothing to install, no server to run and no SDK that has to be on
+your machine before you can begin. Getting started is therefore
+about understanding the concept and seeing where it fits into your
+existing tooling.
 
-## Requirements
+## 1. Read and Understand the Concept
 
-- Node.js >= 18
-- A modern browser
-- About 5 minutes of your time
+Start with the specification itself. The following pages describe
+what openKPI is, how a KPI is structured and which building blocks
+are available:
 
-## Installation
+- [Introduction](/specification/introduction) — the core ideas behind openKPI
+- [Core KPI](/specification/core-kpi) — the JSON structure and every field explained
+- [Units of Measurement](/specification/units-of-measurement)
+- [Aggregation](/specification/aggregation)
+- [Time Window](/specification/time-window)
 
-```bash
-# Clone the repository
-git clone https://example.com/openkpi.git
-cd openkpi
+Once these are clear, you can describe any of your existing KPIs in
+the openKPI format on paper or in a JSON file — without writing any
+code.
 
-# Install dependencies
-npm install
-```
+## 2. Check for a Matching SDK
 
-## First Start
+If you want to produce or consume openKPI documents from your own
+code, see whether an SDK already exists for your language of choice:
 
-Start the documentation development server:
+- [SDKs](/sdks/introduction) — list of available and planned SDKs
 
-```bash
-npm run docs:dev
-```
+If a suitable SDK exists, install it through your usual package
+manager. If not, the JSON structure is small enough to be produced
+or parsed with the standard library of any modern language.
 
-The site will then be available at `http://localhost:5173`.
+## 3. Check Whether Your Tools Already Speak openKPI
 
-## Next Steps
+Many BI, monitoring and analytics tools are gradually adding native
+support for the specification. Before building a custom integration,
+check the documentation of the systems you already use:
 
-| Step | Description |
-| --- | --- |
-| 1 | [Read the introduction](/guide/introduction) |
-| 2 | [Learn the core KPI structure](/guide/core-kpi) |
-| 3 | Create your own dashboard |
+- Does your dashboard / BI tool import openKPI documents directly?
+- Does your data platform expose KPIs via the
+  [API transport](/specification/transport/api) or the
+  [Event transport](/specification/transport/event)?
+- Does your monitoring stack emit KPI events you can simply consume?
+
+If yes, you may be able to wire things together with configuration
+only, without writing a single line of glue code.
+
+## Summary
+
+| Step | What to do                                                            |
+| ---- | --------------------------------------------------------------------- |
+| 1    | Read the [Introduction](/specification/introduction) and the [Core KPI](/specification/core-kpi) page |
+| 2    | Pick a matching [SDK](/sdks/introduction) — or use plain JSON         |
+| 3    | Check whether your existing tools already support openKPI             |
 
 ::: tip
-If you run into problems, take a look at the `README.md` in the project root.
+openKPI is intentionally lightweight: if step 1 is done, you already
+have everything you need to discuss, design and document KPIs in a
+vendor-neutral way.
 :::

@@ -1,9 +1,9 @@
 ---
-title: Time Windows
+title: Time Window
 description: Time window definitions used by openKPI
 ---
 
-# Time Windows
+# Time Window
 
 A time window defines the slice of time over which a KPI is evaluated.
 Two values from the "same" KPI are only comparable if they share the

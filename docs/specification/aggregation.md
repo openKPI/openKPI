@@ -1,9 +1,9 @@
 ---
-title: Aggregations
+title: Aggregation
 description: Aggregation methods supported by openKPI
 ---
 
-# Aggregations
+# Aggregation
 
 An aggregation defines how individual measurements are combined into
 a single KPI value. Choosing the right aggregation is just as important

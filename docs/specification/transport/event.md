@@ -47,8 +47,9 @@ adds metadata for routing and idempotency:
   "event_type": "openkpi.value",
   "emitted_at": "2026-04-01T02:15:00Z",
   "payload": {
-    "kpi_id": "latency_p95_rolling_7d",
-    "kpi_name": "Latency p95 (rolling 7d)",
+    "id": "latency_p95_rolling_7d",
+    "name": "Latency p95 (rolling 7d)",
+    "description": "95th percentile of HTTP request latency observed at the public API gateway over the last 7 days.",
     "value": 187.4,
     "unit": "ms",
     "aggregation": "p95",
@@ -58,7 +59,6 @@ adds metadata for routing and idempotency:
       "end": "2026-04-01T00:00:00Z"
     },
     "timestamp": "2026-04-01T02:15:00Z",
-    "definition_version": "1.0.0",
     "source": "api-gateway"
   }
 }

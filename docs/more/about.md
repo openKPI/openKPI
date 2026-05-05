@@ -35,6 +35,10 @@ A big thank you to the projects that help us build and run openKPI:
     <img src="/logos/vitepress.svg" alt="VitePress logo" />
     <span>VitePress</span>
   </a>
+  <a href="https://vuejs.org" target="_blank" rel="noopener">
+    <img src="/logos/vuedotjs.svg" alt="Vue.js logo" />
+    <span>Vue.js</span>
+  </a>
   <a href="https://www.netlify.com" target="_blank" rel="noopener">
     <img src="/logos/netlify.svg" alt="Netlify logo" />
     <span>Netlify</span>

@@ -13,8 +13,9 @@ both human-readable and machine-parseable.
 
 ```json
 {
-  "kpi_id": "string",
-  "kpi_name": "string",
+  "id": "string",
+  "name": "string",
+  "description": "string",
   "value": 0.0,
   "unit": "string",
   "aggregation": "string",
@@ -24,27 +25,29 @@ both human-readable and machine-parseable.
     "end": "ISO-8601 timestamp"
   },
   "timestamp": "ISO-8601 timestamp",
-  "dimensions": {
-    "dimension_key": "value"
-  },
-  "definition_version": "string",
   "source": "string"
 }
 ```
 
 ## Field Reference
 
-### `kpi_id`
+### `id`
 
 A stable, machine-readable identifier for the KPI. It must be unique
 within an organization and should not change once published. Use a
 slug-style format such as `revenue_sum_monthly` or
 `latency_p95_rolling_7d`.
 
-### `kpi_name`
+### `name`
 
 A human-friendly display name for the KPI. Used in dashboards, reports
-and UI surfaces. May be localized; the `kpi_id` remains stable.
+and UI surfaces. May be localized; the `id` remains stable.
+
+### `description`
+
+A short, human-readable description of what the KPI measures, how it
+is calculated and any caveats consumers should be aware of. Free-form
+text — the place to document the methodology behind the value.
 
 ### `value`
 
@@ -61,13 +64,13 @@ The unit of measurement of the value — see
 ### `aggregation`
 
 How the underlying observations were aggregated into the value — see
-[Aggregations](./aggregations). Examples: `sum`, `avg`, `p95`,
+[Aggregation](./aggregation). Examples: `sum`, `avg`, `p95`,
 `count_distinct`, `growth_rate`.
 
 ### `time_window`
 
 The slice of time the value refers to — see
-[Time Windows](./time-windows).
+[Time Window](./time-window).
 
 | Field   | Description                                                      |
 | ------- | ---------------------------------------------------------------- |
@@ -81,19 +84,6 @@ The point in time at which the value was produced (ISO-8601). This is
 the *creation* time of the record, not the time range it describes —
 that is encoded in `time_window`.
 
-### `dimensions`
-
-A free-form key/value map of dimensions that further qualify the
-value, such as `country: "DE"`, `product: "premium"` or
-`environment: "prod"`. Consumers can group, filter and compare KPIs
-along these dimensions.
-
-### `definition_version`
-
-The version of the underlying KPI *definition* that produced the
-value. Allows consumers to detect breaking definition changes
-(e.g. `1.0.0`, `2.1.3`). Follow [Semantic Versioning](https://semver.org).
-
 ### `source`
 
 The producing system or pipeline, e.g. `billing-service`,
@@ -104,8 +94,9 @@ debugging.
 
 ```json
 {
-  "kpi_id": "revenue_sum_monthly",
-  "kpi_name": "Monthly Revenue",
+  "id": "revenue_sum_monthly",
+  "name": "Monthly Revenue",
+  "description": "Total order revenue booked in the calendar month, in euros.",
   "value": 128450.75,
   "unit": "EUR",
   "aggregation": "sum",
@@ -115,16 +106,12 @@ debugging.
     "end": "2026-04-01T00:00:00Z"
   },
   "timestamp": "2026-04-01T02:15:00Z",
-  "dimensions": {
-    "country": "DE",
-    "product": "premium"
-  },
-  "definition_version": "1.2.0",
   "source": "billing-service"
 }
 ```
 
 ::: tip
-Treat `kpi_id`, `unit`, `aggregation` and `time_window.type` as a
-contract — changing any of them requires a new `definition_version`.
+Treat `id`, `unit`, `aggregation` and `time_window.type` as a
+contract — if any of them have to change, publish a new KPI with a
+new `id` instead of silently changing the meaning of an existing one.
 :::

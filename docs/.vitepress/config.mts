@@ -1,7 +1,7 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'openKPI',
+  title: '🎯 openKPI',
   description: 'openKPI documentation',
   lang: 'en-US',
   cleanUrls: true,
@@ -13,7 +13,9 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started' },
       { text: 'Specification', link: '/specification/introduction' },
-      { text: 'About', link: '/about' }
+      { text: 'SDKs', link: '/sdks/introduction' },
+      { text: 'Examples', link: '/examples/financial-kpis' },
+      { text: 'About', link: '/more/about' }
     ],
     sidebar: [
       {
@@ -33,8 +35,8 @@ export default defineConfig({
             collapsed: false,
             items: [
               { text: 'Units of Measurement', link: '/specification/units-of-measurement' },
-              { text: 'Aggregations', link: '/specification/aggregations' },
-              { text: 'Time Windows', link: '/specification/time-windows' }
+              { text: 'Aggregation', link: '/specification/aggregation' },
+              { text: 'Time Window', link: '/specification/time-window' }
             ]
           },
           {
@@ -44,14 +46,27 @@ export default defineConfig({
               { text: 'API', link: '/specification/transport/api' },
               { text: 'Event', link: '/specification/transport/event' }
             ]
-          },
-          { text: 'SDKs', link: '/specification/sdks' }
+          }
+        ]
+      },
+      {
+        text: 'SDKs',
+        items: [
+          { text: 'Introduction', link: '/sdks/introduction' }
+        ]
+      },
+      {
+        text: 'Examples',
+        items: [
+          { text: 'Financial KPIs', link: '/examples/financial-kpis' },
+          { text: 'KPIs for Energy Suppliers', link: '/examples/energy-suppliers' },
+          { text: 'E-commerce KPIs', link: '/examples/ecommerce' }
         ]
       },
       {
         text: 'More',
         items: [
-          { text: 'About', link: '/about' }
+          { text: 'About', link: '/more/about' }
         ]
       }
     ],

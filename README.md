@@ -14,17 +14,23 @@ Documentation site for openKPI, built with [VitePress](https://vitepress.dev).
 ├── docs/
 │   ├── .vitepress/
 │   │   └── config.mts        # VitePress configuration (nav, sidebar, theme)
-│   ├── guide/
+│   ├── specification/
 │   │   ├── introduction.md
 │   │   ├── core-kpi.md
 │   │   ├── units-of-measurement.md
-│   │   ├── aggregations.md
-│   │   ├── time-windows.md
-│   │   ├── transport/
-│   │   │   ├── api.md
-│   │   │   └── event.md
-│   │   └── sdks.md
-│   ├── about.md
+│   │   ├── aggregation.md
+│   │   ├── time-window.md
+│   │   └── transport/
+│   │       ├── api.md
+│   │       └── event.md
+│   ├── sdks/
+│   │   └── introduction.md
+│   ├── examples/
+│   │   ├── financial-kpis.md
+│   │   ├── energy-suppliers.md
+│   │   └── ecommerce.md
+│   ├── more/
+│   │   └── about.md
 │   ├── getting-started.md
 │   └── index.md              # Landing page (hero layout)
 ├── package.json
