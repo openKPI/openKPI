@@ -12,7 +12,14 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Getting Started', link: '/getting-started' },
-      { text: 'Specification', link: '/specification/introduction' },
+      {
+        text: 'Specification',
+        items: [
+          { text: 'Introduction', link: '/specification/introduction' },
+          { text: 'Core', link: '/specification/core-kpi' },
+          { text: 'Transport', link: '/specification/transport/api' }
+        ]
+      },
       { text: 'SDKs', link: '/sdks/introduction' },
       { text: 'Examples', link: '/examples/financial-kpis' },
       { text: 'About', link: '/more/about' }
@@ -30,7 +37,7 @@ export default defineConfig({
         items: [
           { text: 'Introduction', link: '/specification/introduction' },
           {
-            text: 'Core KPI',
+            text: 'Core',
             link: '/specification/core-kpi',
             collapsed: false,
             items: [

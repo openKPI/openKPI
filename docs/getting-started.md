@@ -17,11 +17,11 @@ Start with the specification itself. The following pages describe
 what openKPI is, how a KPI is structured and which building blocks
 are available:
 
-- [Introduction](/specification/introduction) — the core ideas behind openKPI
-- [Core KPI](/specification/core-kpi) — the JSON structure and every field explained
-- [Units of Measurement](/specification/units-of-measurement)
-- [Aggregation](/specification/aggregation)
-- [Time Window](/specification/time-window)
+- [Introduction](/specification/introduction) — the core ideas behind openKPI and why a vendor-neutral format matters.
+- [Core](/specification/core-kpi) — the JSON structure of a KPI document with every field explained in detail.
+- [Units of Measurement](/specification/units-of-measurement) — how to express values consistently across systems and locales.
+- [Aggregation](/specification/aggregation) — how individual data points are combined into a single KPI value.
+- [Time Window](/specification/time-window) — how to define the period a KPI value refers to.
 
 Once these are clear, you can describe any of your existing KPIs in
 the openKPI format on paper or in a JSON file — without writing any
@@ -52,14 +52,6 @@ check the documentation of the systems you already use:
 
 If yes, you may be able to wire things together with configuration
 only, without writing a single line of glue code.
-
-## Summary
-
-| Step | What to do                                                            |
-| ---- | --------------------------------------------------------------------- |
-| 1    | Read the [Introduction](/specification/introduction) and the [Core KPI](/specification/core-kpi) page |
-| 2    | Pick a matching [SDK](/sdks/introduction) — or use plain JSON         |
-| 3    | Check whether your existing tools already support openKPI             |
 
 ::: tip
 openKPI is intentionally lightweight: if step 1 is done, you already

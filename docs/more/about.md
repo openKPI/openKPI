@@ -24,13 +24,33 @@ This project is released under the **CC-BY 4.0 License**.
 ## Contact
 
 Questions and suggestions can be raised via the repository's
-issue tracker.
+[issue tracker](https://github.com/openKPI/openKPI/issues).
 
 ## Built With
 
 A big thank you to the projects that help us build and run openKPI:
 
 <div class="logo-wall">
+  <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">
+    <img src="/logos/claude.svg" alt="Claude logo" />
+    <span>Claude</span>
+  </a>
+  <a href="https://github.com" target="_blank" rel="noopener" class="logo-github">
+    <img src="/logos/github.svg" alt="GitHub logo" />
+    <span>GitHub</span>
+  </a>
+  <a href="https://daringfireball.net/projects/markdown/" target="_blank" rel="noopener" class="logo-markdown">
+    <img src="/logos/markdown.svg" alt="Markdown logo" />
+    <span>Markdown</span>
+  </a>
+  <a href="https://www.netlify.com" target="_blank" rel="noopener">
+    <img src="/logos/netlify.svg" alt="Netlify logo" />
+    <span>Netlify</span>
+  </a>
+  <a href="https://www.npmjs.com" target="_blank" rel="noopener">
+    <img src="/logos/npm.svg" alt="npm logo" />
+    <span>npm</span>
+  </a>
   <a href="https://vitepress.dev" target="_blank" rel="noopener">
     <img src="/logos/vitepress.svg" alt="VitePress logo" />
     <span>VitePress</span>
@@ -38,14 +58,6 @@ A big thank you to the projects that help us build and run openKPI:
   <a href="https://vuejs.org" target="_blank" rel="noopener">
     <img src="/logos/vuedotjs.svg" alt="Vue.js logo" />
     <span>Vue.js</span>
-  </a>
-  <a href="https://www.netlify.com" target="_blank" rel="noopener">
-    <img src="/logos/netlify.svg" alt="Netlify logo" />
-    <span>Netlify</span>
-  </a>
-  <a href="https://github.com" target="_blank" rel="noopener" class="logo-github">
-    <img src="/logos/github.svg" alt="GitHub logo" />
-    <span>GitHub</span>
   </a>
 </div>
 
@@ -82,7 +94,8 @@ A big thank you to the projects that help us build and run openKPI:
   height: 48px;
   display: block;
 }
-html.dark .logo-wall .logo-github img {
+html.dark .logo-wall .logo-github img,
+html.dark .logo-wall .logo-markdown img {
   filter: invert(1);
 }
 </style>
