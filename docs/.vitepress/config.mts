@@ -16,7 +16,7 @@ export default defineConfig({
         text: 'Specification',
         items: [
           { text: 'Introduction', link: '/specification/introduction' },
-          { text: 'Core', link: '/specification/core-kpi' },
+          { text: 'Core', link: '/specification/core/' },
           { text: 'Transport', link: '/specification/transport/' }
         ]
       },
@@ -38,12 +38,12 @@ export default defineConfig({
           { text: 'Introduction', link: '/specification/introduction' },
           {
             text: 'Core',
-            link: '/specification/core-kpi',
+            link: '/specification/core/',
             collapsed: false,
             items: [
-              { text: 'Units of Measurement', link: '/specification/units-of-measurement' },
-              { text: 'Aggregation', link: '/specification/aggregation' },
-              { text: 'Time Window', link: '/specification/time-window' }
+              { text: 'Units of Measurement', link: '/specification/core/units-of-measurement' },
+              { text: 'Aggregation', link: '/specification/core/aggregation' },
+              { text: 'Time Window', link: '/specification/core/time-window' }
             ]
           },
           {

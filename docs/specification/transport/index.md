@@ -7,7 +7,7 @@ description: How openKPI documents are exchanged between systems
 
 The transport layer of openKPI defines *how* KPI documents move
 between producers and consumers. The data model itself — described in
-[Core KPI](../core-kpi) — is transport-agnostic: the same JSON
+[Core KPI](../core/) — is transport-agnostic: the same JSON
 document can be served from an HTTP endpoint, published as an event
 on a message broker or written to a file.
 

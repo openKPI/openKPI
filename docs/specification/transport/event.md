@@ -37,7 +37,7 @@ adds metadata for routing, idempotency and provenance:
 | `event_id`   | Unique identifier of the event (UUID)                                                                                |
 | `event_type` | Always `openkpi.value` for KPI value events                                                                          |
 | `emitted_at` | ISO-8601 timestamp the event was produced                                                                            |
-| `payload`    | A complete openKPI document (see [Core KPI](../core-kpi))                                                            |
+| `payload`    | A complete openKPI document (see [Core KPI](../core/))                                                               |
 | `digest`     | *(recommended)* SHA-256 hash of the canonicalized `payload` JSON, hex-encoded — lets consumers detect tampering      |
 | `key_id`     | *(recommended)* Identifier of the public key used to sign the event, resolvable via JWKS or an out-of-band registry  |
 | `signature`  | *(recommended)* Detached signature over `event_id`, `event_type`, `emitted_at` and `digest`, base64-encoded          |

@@ -18,10 +18,10 @@ what openKPI is, how a KPI is structured and which building blocks
 are available:
 
 - [Introduction](/specification/introduction) — the core ideas behind openKPI and why a vendor-neutral format matters.
-- [Core](/specification/core-kpi) — the JSON structure of a KPI document with every field explained in detail.
-- [Units of Measurement](/specification/units-of-measurement) — how to express values consistently across systems and locales.
-- [Aggregation](/specification/aggregation) — how individual data points are combined into a single KPI value.
-- [Time Window](/specification/time-window) — how to define the period a KPI value refers to.
+- [Core](/specification/core/) — the JSON structure of a KPI document with every field explained in detail.
+- [Units of Measurement](/specification/core/units-of-measurement) — how to express values consistently across systems and locales.
+- [Aggregation](/specification/core/aggregation) — how individual data points are combined into a single KPI value.
+- [Time Window](/specification/core/time-window) — how to define the period a KPI value refers to.
 
 Once these are clear, you can describe any of your existing KPIs in
 the openKPI format on paper or in a JSON file — without writing any
