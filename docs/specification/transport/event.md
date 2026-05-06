@@ -30,14 +30,38 @@ The specification is broker-agnostic. Common choices include:
 ## Event Envelope
 
 Each event carries a single KPI document as its payload. The envelope
-adds metadata for routing and idempotency:
+adds metadata for routing, idempotency and provenance:
 
-| Field        | Description                                                 |
-| ------------ | ----------------------------------------------------------- |
-| `event_id`   | Unique identifier of the event (UUID)                       |
-| `event_type` | Always `openkpi.value` for KPI value events                 |
-| `emitted_at` | ISO-8601 timestamp the event was produced                   |
-| `payload`    | A complete openKPI document (see [Core KPI](../core-kpi))   |
+| Field        | Description                                                                                                          |
+| ------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `event_id`   | Unique identifier of the event (UUID)                                                                                |
+| `event_type` | Always `openkpi.value` for KPI value events                                                                          |
+| `emitted_at` | ISO-8601 timestamp the event was produced                                                                            |
+| `payload`    | A complete openKPI document (see [Core KPI](../core-kpi))                                                            |
+| `digest`     | *(recommended)* SHA-256 hash of the canonicalized `payload` JSON, hex-encoded — lets consumers detect tampering      |
+| `key_id`     | *(recommended)* Identifier of the public key used to sign the event, resolvable via JWKS or an out-of-band registry  |
+| `signature`  | *(recommended)* Detached signature over `event_id`, `event_type`, `emitted_at` and `digest`, base64-encoded          |
+
+## Integrity & Provenance
+
+Events travel through brokers that often cannot enforce per-message
+authorization. To prevent tampering and to make the publisher
+accountable, the envelope SHOULD carry a detached signature using
+`digest`, `key_id` and `signature`.
+
+The recommended scheme is **Ed25519** with public keys distributed via
+JWKS, but the spec is algorithm-agnostic — `key_id` resolution
+determines the algorithm and key material.
+
+Consumers MUST verify the signature before using the value for any
+decision that changes state — alerting, executive reporting,
+regulatory submission. Unsigned events are acceptable only for
+development and on trusted brokers inside a single security boundary.
+
+When a broker offers transport-level authentication (mTLS, SASL,
+broker ACLs), it SHOULD still be combined with a payload signature:
+transport auth proves *who connected to the broker*, signatures prove
+*who produced the value*.
 
 ## Example
 
@@ -60,7 +84,10 @@ adds metadata for routing and idempotency:
     },
     "timestamp": "2026-04-01T02:15:00Z",
     "source": "api-gateway"
-  }
+  },
+  "digest": "9b74c9897bac770ffc029102a200c5de2c3e4b1c8a4d6f9e1a2b7c8d3e4f5061",
+  "key_id": "api-gateway-2026-q2",
+  "signature": "MEUCIQDk7y3Yq6q4...A7rW2GZ2F1A=="
 }
 ```
 

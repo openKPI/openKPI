@@ -21,10 +21,10 @@ Classic, easy to compare, well suited for reporting:
 - Quarterly
 - Yearly
 
-Optional precision:
-
-- Calendar week vs. ISO week
-- Fiscal year vs. calendar year
+Calendar windows are inherently **time-zone- and calendar-dependent**.
+Two values labelled `monthly` for `2026-03` are not comparable unless
+they were bucketed in the same time zone and the same calendar
+system. The `timezone` and `calendar` fields below make this explicit.
 
 ---
 
@@ -106,6 +106,56 @@ For flexible analysis:
 - Custom range (e.g. `2026-01-01` → `2026-03-15`)
 - Fixed intervals (e.g. campaign runtime)
 - Feature release windows
+
+---
+
+## 9. Time Zone & Calendar
+
+A calendar window without a time zone is ambiguous. „March 2026" in
+Tokyo starts nine hours earlier than in UTC and 16 hours earlier than
+in Los Angeles. To keep KPI values comparable, every calendar window
+SHOULD declare the time zone and calendar system it was bucketed in.
+
+### `timezone`
+
+IANA time zone identifier (e.g. `Europe/Berlin`, `Asia/Tokyo`, `UTC`).
+The `start` and `end` ISO-8601 timestamps remain in UTC offset notation
+— `timezone` only documents which local clock the boundaries align to.
+
+```json
+"time_window": {
+  "type": "monthly",
+  "start": "2026-02-28T23:00:00Z",
+  "end": "2026-03-31T22:00:00Z",
+  "timezone": "Europe/Berlin"
+}
+```
+
+The `start`/`end` timestamps above are the UTC instants that correspond
+to midnight on March 1st and April 1st in Berlin local time — so a
+consumer in any zone can compare them with `last-month-in-Berlin`
+exactly.
+
+### `calendar`
+
+The calendar system the labels (`monthly`, `quarterly`, `yearly`, …)
+refer to:
+
+- `gregorian` *(default)* — standard calendar months and weeks.
+- `iso` — ISO-8601 weeks: weeks start Monday, week 1 contains the
+  first Thursday of the year. Use this whenever you produce
+  `weekly` KPIs that should align with ISO week numbers.
+- `fiscal` — the organization's fiscal calendar. The fiscal start
+  month and week numbering must be documented in the KPI's
+  `description` (e.g. „fiscal year starts on 1 February"); without
+  it, two systems publishing `quarterly` KPIs with `calendar: fiscal`
+  cannot be compared.
+
+### Rolling, real-time and event-based windows
+
+Rolling windows (`rolling_7d`, `last_15m`, …) are anchored to absolute
+instants, not calendar boundaries — `timezone` and `calendar` are
+irrelevant for them and SHOULD be omitted.
 
 ::: tip
 Combine the time window with the aggregation in the KPI name —

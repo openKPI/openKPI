@@ -55,6 +55,41 @@ Content-Type: application/json
 }
 ```
 
+## Authentication
+
+openKPI does not invent a new auth scheme — it reuses the standard
+HTTP mechanisms. Every production deployment MUST authenticate
+requests; KPIs feed boardrooms and regulators, so provenance matters
+more than convenience.
+
+| Mechanism            | Header / Setup                              | Recommended for                                  |
+| -------------------- | ------------------------------------------- | ------------------------------------------------ |
+| **Bearer (OAuth 2.0 / JWT)** | `Authorization: Bearer <token>`     | Default for user- and service-to-service traffic |
+| **Mutual TLS (mTLS)**        | Client certificate at the TLS layer | Service-to-service inside a controlled network   |
+| **API key**                  | `Authorization: ApiKey <key>` or vendor header | Read-only public feeds only — never for writes |
+
+Bearer tokens SHOULD be short-lived and carry explicit `aud` and
+`scope` claims. Servers SHOULD enforce the following scopes per
+endpoint:
+
+| Scope        | Endpoints                                              |
+| ------------ | ------------------------------------------------------ |
+| `kpi:read`   | `GET /kpis`, `GET /kpis/{id}`, `GET /kpis/{id}/history` |
+| `kpi:write`  | `POST /kpis/{id}`                                      |
+
+Anonymous access SHOULD be rejected. A request without credentials
+MUST return `401 Unauthorized`; a request with valid credentials but
+insufficient scope MUST return `403 Forbidden`.
+
+### Example
+
+```http
+GET /kpis/revenue_sum_monthly HTTP/1.1
+Host: kpi.example.com
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
 ## When to Use
 
 - Dashboards and reporting tools that pull on demand

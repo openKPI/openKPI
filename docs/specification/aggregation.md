@@ -147,21 +147,6 @@ aggregations to make results more robust or more focused.
 
 ---
 
-## Domain-specific Examples
-
-These are not aggregation primitives but composite KPIs assembled from
-the building blocks above. They illustrate how the basic operators are
-combined in real business contexts.
-
-| Identifier         | Name              | Description                                   | Example                                |
-| ------------------ | ----------------- | --------------------------------------------- | -------------------------------------- |
-| `arpu`             | ARPU              | Average revenue per user                      | Total revenue divided by active users  |
-| `ltv`              | Lifetime Value    | Expected revenue from a customer over time    | Model-based LTV per acquisition cohort |
-| `sla_compliance`   | SLA Compliance    | Share of measurements meeting an SLA target   | % of requests under 200 ms             |
-| `utilization_rate` | Utilization Rate  | Used capacity divided by available capacity   | Server CPU utilization in %            |
-
----
-
 ## Best Practices for Your Standard
 
 - Always define the aggregation **explicitly** — never rely on an implicit `avg`.

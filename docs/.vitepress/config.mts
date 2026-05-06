@@ -17,7 +17,7 @@ export default defineConfig({
         items: [
           { text: 'Introduction', link: '/specification/introduction' },
           { text: 'Core', link: '/specification/core-kpi' },
-          { text: 'Transport', link: '/specification/transport/api' }
+          { text: 'Transport', link: '/specification/transport/' }
         ]
       },
       { text: 'SDKs', link: '/sdks/introduction' },
@@ -48,6 +48,7 @@ export default defineConfig({
           },
           {
             text: 'Transport',
+            link: '/specification/transport/',
             collapsed: false,
             items: [
               { text: 'API', link: '/specification/transport/api' },
